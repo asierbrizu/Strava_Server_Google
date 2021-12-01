@@ -14,7 +14,7 @@ public class LoginGoogleServer {
 		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];		
 		
 		try {
-			ILoginGoogle remoteObject = LoginGoogleService.getInstance();			
+			ILoginGoogle remoteObject = new LoginGoogleService();			
 			Naming.rebind(name, remoteObject);
 			System.out.println(" * Google login Server '" + name + "' started!!");
 		} catch (Exception ex) {

@@ -18,24 +18,13 @@ public class LoginGoogleService extends UnicastRemoteObject implements ILoginGoo
 	//Attribute for the Singleton pattern
 	public static LoginGoogleService instance;
 			
-	private LoginGoogleService() throws RemoteException {
+	public LoginGoogleService() throws RemoteException {
 		super();
-		cuentas.put("david", "zapatilla");
-		cuentas.put("asier", "calcetines");
+		cuentas.put("david@opendeusto.es", "zapatilla");
+		cuentas.put("asier@opendeusto.es", "calcetines");
 	}
 	
-	public static LoginGoogleService getInstance() {
-		if (instance == null) {
-			try {
-				instance = new LoginGoogleService();
-			} catch(Exception ex) {
-				System.err.println("  # Error initializing service(): " + ex.getMessage());
-			}
-		}
-		
-		return instance;
-	}
-	public boolean comprobarContrasenya(String email, String contrasenya) throws RemoteException {
+	public boolean comprobarContrasenya(String email, String contrasenya) throws RemoteException {		
 		return (cuentas.containsKey(email)&&cuentas.get(email).equals(contrasenya));
 	}
 }
